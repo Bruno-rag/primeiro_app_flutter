@@ -17,7 +17,7 @@ class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
       appBar: AppBar(
         title: Text('Hamburgueria'),
         //centerTitle: true,
-        leading: IconButton(
+       /* leading: IconButton(
           icon: Icon(Icons.menu),
           onPressed: () {},
         ),
@@ -30,8 +30,7 @@ class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
             icon: Icon(Icons.search),
             onPressed: () {},
           )
-        ],
-        //backgroundColor: Colors.purple,
+        ],*/
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
