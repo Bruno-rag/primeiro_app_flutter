@@ -4,6 +4,7 @@ import 'package:primeiro_app_flutter/pages/Home/acompanhamentos.page.dart';
 import 'package:primeiro_app_flutter/pages/Home/hamburguerCasa.page.dart';
 import 'package:primeiro_app_flutter/pages/Home/bebidas.page.dart';
 import 'package:primeiro_app_flutter/pages/Home/monte.page.dart';
+import 'package:primeiro_app_flutter/pages/Home/sobremesa.page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -315,6 +316,82 @@ class HomePage extends StatelessWidget {
               ),
 
             ),
+          const SizedBox(
+            height: 20,
+          ),
+          //Sobremesa
+          Container(
+            padding: EdgeInsets.only(
+              top: 12,
+              left: 20,
+              right: 20,
+            ),
+            //color: Colors.amber,
+            height: 130,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(36),
+              image:  DecorationImage(
+                  image: NetworkImage("https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430__480.jpg"),
+                  fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.24),
+                    BlendMode.darken,
+                  )
+              ),
+
+            ),
+            //descrição
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Sobremesa",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  "Sobremesas disponíveis na casa",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(
+                  height: 0,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 240,
+                    ),
+                    Container(
+                      height: 40,
+                      width: 60,
+                      child: TextButton(
+                        onPressed: (){
+                          Navigator.of(context).push<int>(
+                            MaterialPageRoute(
+                              builder: (_)=> SobremesaPage(),
+                            ),
+                          );
+                        },
+                        child: Icon( Icons.arrow_forward_ios),
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.white70,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+
+          ),
 
 
         ],

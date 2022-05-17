@@ -8,7 +8,6 @@ class SimpleAppBarPage extends StatefulWidget {
   @override
   _SimpleAppBarPageState createState() => _SimpleAppBarPageState();
 }
-
 class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
   @override
   Widget build(BuildContext context) => DefaultTabController(
@@ -46,9 +45,9 @@ class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
           indicatorWeight: 5,
           tabs: [
             Tab(icon: Icon(Icons.home), text: 'Home'),
-            Tab(icon: Icon(Icons.chat_bubble), text: 'Chat'),
             Tab(icon: Icon(Icons.face), text: 'Perfil'),
             Tab(icon: Icon(Icons.add_shopping_cart), text: 'Carrinho'),
+            Tab(icon: Icon(Icons.chat_bubble), text: 'Chat'),
           ],
         ),
         elevation: 20,
@@ -57,9 +56,9 @@ class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
       body: TabBarView(
         children: <Widget> [
           HomePage(),
-          ChatPage(),
           PerfilPage(),
           CarrinhoPage(),
+          ChatPage(),
         ],
       ),
     ),

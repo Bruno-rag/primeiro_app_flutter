@@ -35,11 +35,51 @@ class _DescricaoPageState extends State<DescricaoPage> {
       body: Container(
         child: Column(
           children: [
-            SizedBox(
+            Container(
               width: MediaQuery.of(context).size.width,
-
               child: Image.network(widget.burger.urlAvatar),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(36)
+              ),
             ),
+            SizedBox(
+              height: 8,
+            ),
+            Text(
+              widget.burger.nome,
+              style: TextStyle(
+                fontSize:30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Text(
+              "R\$"+widget.burger.preco.toStringAsFixed(2),
+              style: TextStyle(
+                fontSize:30,
+                fontWeight: FontWeight.normal,
+                color: Colors.deepPurpleAccent
+              ),
+            ),
+            Expanded(child: Container()),
+            Container(
+              height: 40,
+              width: MediaQuery.of(context).size.width,
+              color: Colors.deepPurpleAccent,
+              child: TextButton(
+                child: Text(
+                  "Adicionar ao Carrinho",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: () {
+                },
+              ),
+            ),
+
           ],
         ),
       ),
