@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:primeiro_app_flutter/modelo/Hamburger.model.dart';
+import 'package:primeiro_app_flutter/modelo/item.model.dart';
+import 'package:primeiro_app_flutter/pages/Carrinho/carrinho.page.dart';
+import 'package:primeiro_app_flutter/Control/item.control.dart';
+import 'package:primeiro_app_flutter/pages/appBar.page.dart';
 
 class DescricaoPage extends StatefulWidget {
-  final Burger burger;
+  final Item burger;
   const DescricaoPage({
-    Key? key,
-    required this.burger,
+    Key? key, required this.burger,
+
   }) : super(key: key);
 
   @override
@@ -13,6 +16,13 @@ class DescricaoPage extends StatefulWidget {
 }
 
 class _DescricaoPageState extends State<DescricaoPage> {
+  void _enviarAgr(){
+    Navigator.pushReplacementNamed(context,
+      CarrinhoPage.tag,
+      arguments: widget.burger,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +45,7 @@ class _DescricaoPageState extends State<DescricaoPage> {
       body: Container(
         child: Column(
           children: [
+            //imagem hamburger
             Container(
               width: MediaQuery.of(context).size.width,
               child: Image.network(widget.burger.urlAvatar),
@@ -65,7 +76,7 @@ class _DescricaoPageState extends State<DescricaoPage> {
             ),
             Expanded(child: Container()),
             Container(
-              height: 40,
+              height: 60,
               width: MediaQuery.of(context).size.width,
               color: Colors.deepPurpleAccent,
               child: TextButton(
@@ -73,13 +84,17 @@ class _DescricaoPageState extends State<DescricaoPage> {
                   "Adicionar ao Carrinho",
                   style: TextStyle(
                     color: Colors.white,
+                    fontSize: 18,
                   ),
                 ),
                 onPressed: () {
+                  //_enviarAgr();
+                  Navigator.of(context).push<int>(MaterialPageRoute(
+                    builder: (_) => CarrinhoPage(itens: widget.burger),
+                  ),);
                 },
               ),
             ),
-
           ],
         ),
       ),

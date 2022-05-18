@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:primeiro_app_flutter/modelo/item.model.dart';
+import 'package:primeiro_app_flutter/pages/Home/descricao.page.dart';
 
 class AcompanhamentosPage extends StatefulWidget {
   const AcompanhamentosPage({Key? key}) : super(key: key);
@@ -8,6 +10,18 @@ class AcompanhamentosPage extends StatefulWidget {
 }
 
 class _AcompanhamentosPageState extends State<AcompanhamentosPage> {
+
+  List<Item> burger= [
+    const Item(nome: "Batata frita",
+        preco: 8.00,
+        urlAvatar: "https://media.istockphoto.com/photos/chips-fries-closeup-fast-food-top-view-picture-id1225659636?k=20&m=1225659636&s=612x612&w=0&h=-PdENRkRjWWgtSt6SmzQFNAOByhAIYSOBNV65zw0wwk="
+    ),
+    const Item(nome: "Molho",
+        preco: 2.00,
+        urlAvatar: "https://media.istockphoto.com/photos/chips-fries-closeup-fast-food-top-view-picture-id1225659636?k=20&m=1225659636&s=612x612&w=0&h=-PdENRkRjWWgtSt6SmzQFNAOByhAIYSOBNV65zw0wwk="
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,21 +40,39 @@ class _AcompanhamentosPageState extends State<AcompanhamentosPage> {
           ),
         ),
       ),
-      body: ListView(
-        padding: EdgeInsets.all(30),
-        children: [
-          //Item
-          Container(
+      body: ListView.builder(
+        itemCount: burger.length,
+        itemBuilder: (context, index) => Card(
+          child: ListTile(
+            leading: CircleAvatar(
+              radius: 40,
+              backgroundImage: NetworkImage(burger[index].urlAvatar),
+            ),
+            title: Text(burger[index].nome),
+            subtitle: Text("R\$ "+burger[index].preco.toStringAsFixed(2),),
+            trailing: const Icon(Icons.arrow_forward),
+
+            onTap: (){
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => DescricaoPage(burger: burger[index])
+              ));
+            },
+          ),
+        ),
+        // padding: EdgeInsets.all(30),
+
+        //Item
+        /*Container(
             height: 130,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(40),
               boxShadow: <BoxShadow>[
                 BoxShadow(
-                    color: Colors.black54,
-                    blurRadius: 15.0,
-                    offset: Offset(0.0,0.75)
+                  color: Colors.black54,
+                  blurRadius: 15.0,
+                  offset: Offset(0.0,0.75)
 
-                ),
+                )
               ],
               gradient: LinearGradient(
                 colors: [Colors.indigoAccent, Colors.deepPurple],
@@ -59,8 +91,8 @@ class _AcompanhamentosPageState extends State<AcompanhamentosPage> {
                     borderRadius: BorderRadius.circular(36),
 
                     image:  DecorationImage(
-                      image: NetworkImage("https://c.pxhere.com/photos/13/fa/beef_bread_bun_burger_cheese_cheeseburger_close_up_delicious-1556149.jpg!d"),
-                      fit: BoxFit.cover,
+                        image: NetworkImage("https://c.pxhere.com/photos/13/fa/beef_bread_bun_burger_cheese_cheeseburger_close_up_delicious-1556149.jpg!d"),
+                        fit: BoxFit.cover,
 
                     ),
                   ),
@@ -75,14 +107,12 @@ class _AcompanhamentosPageState extends State<AcompanhamentosPage> {
                       height: 5,
                     ),
                     Text(
-                      "Nome do\n acompanhamento",
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                        "Nome Do Hamburger",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                     ),
                     SizedBox(
                       height: 5,
@@ -99,19 +129,20 @@ class _AcompanhamentosPageState extends State<AcompanhamentosPage> {
                       height: 5,
                     ),
                     Text(
-                      "R\$ 99,99",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                        "R\$ 99,99",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                     ),
                   ],
                 ),
               ],
             ),
-          ),
-        ],
+          ),*/
+
+
       ),
     );
   }

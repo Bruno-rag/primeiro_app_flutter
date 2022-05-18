@@ -35,6 +35,7 @@ class _RecuperarPageState extends State<RecuperarPage> {
         ),
         child: ListView(
           children: [
+            //Titulo
             Text(
               "Recuperar senha",
               textAlign: TextAlign.center,
@@ -45,11 +46,7 @@ class _RecuperarPageState extends State<RecuperarPage> {
               ),
             ),
             SizedBox(
-              height: 10,
-            ),
-
-            SizedBox(
-              height: 10,
+              height: 20,
             ),
             Container(
               padding: EdgeInsets.all(20),

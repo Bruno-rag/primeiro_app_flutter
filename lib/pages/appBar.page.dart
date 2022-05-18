@@ -11,7 +11,7 @@ class SimpleAppBarPage extends StatefulWidget {
 class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
   @override
   Widget build(BuildContext context) => DefaultTabController(
-    length: 4,
+    length: 3,
     child: Scaffold(
       appBar: AppBar(
         title: Text('Hamburgueria'),
@@ -19,17 +19,22 @@ class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
        /* leading: IconButton(
           icon: Icon(Icons.menu),
           onPressed: () {},
-        ),
+        ),*/
         actions: [
           IconButton(
-            icon: Icon(Icons.notifications_none),
-            onPressed: () {},
+            icon: Icon(Icons.add_shopping_cart),
+            iconSize: 25,
+            onPressed: () {
+              Navigator.of(context).push<int>(MaterialPageRoute(
+                builder: (_) => CarrinhoPage(),
+              ),);
+            },
           ),
-          IconButton(
+          /*IconButton(
             icon: Icon(Icons.search),
             onPressed: () {},
-          )
-        ],*/
+          )*/
+        ],
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -46,7 +51,7 @@ class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
           tabs: [
             Tab(icon: Icon(Icons.home), text: 'Home'),
             Tab(icon: Icon(Icons.face), text: 'Perfil'),
-            Tab(icon: Icon(Icons.add_shopping_cart), text: 'Carrinho'),
+            //Tab(icon: Icon(Icons.add_shopping_cart), text: 'Carrinho'),
             Tab(icon: Icon(Icons.chat_bubble), text: 'Chat'),
           ],
         ),
@@ -57,7 +62,7 @@ class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
         children: <Widget> [
           HomePage(),
           PerfilPage(),
-          CarrinhoPage(),
+         // CarrinhoPage(),
           ChatPage(),
         ],
       ),

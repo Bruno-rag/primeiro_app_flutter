@@ -1,111 +1,76 @@
 
 import 'package:flutter/material.dart';
 import 'package:primeiro_app_flutter/pages/Carrinho/comprar.Page.dart';
+import 'package:primeiro_app_flutter/modelo/item.model.dart';
+import 'package:primeiro_app_flutter/Control/item.control.dart';
 
 class CarrinhoPage extends StatefulWidget {
-  const CarrinhoPage({Key? key}) : super(key: key);
-
+  final Item? itens;
+  const CarrinhoPage({Key? key, this.itens}) : super(key: key,);
+  static final tag = 'carPage';
   @override
   State<CarrinhoPage> createState() => _CarrinhoPageState();
 }
 
 class _CarrinhoPageState extends State<CarrinhoPage> {
+
+  List<Item> itens = [
+    const Item(nome: "X-tudo",
+    preco: 14.00,
+    urlAvatar: "https://c.pxhere.com/photos/13/fa/beef_bread_bun_burger_cheese_cheeseburger_close_up_delicious-1556149.jpg!d"
+    ),
+    const Item(nome: "Duplo bacon",
+    preco: 16.00,
+    urlAvatar: "https://c.pxhere.com/photos/13/fa/beef_bread_bun_burger_cheese_cheeseburger_close_up_delicious-1556149.jpg!d"
+    ),
+  ];
+
+
+
   @override
   Widget build(BuildContext context) => Container(
     child: Scaffold(
-      backgroundColor: Colors.white,
+      appBar: AppBar(
+
+        title: Text(
+            "Carrinho de compras"
+        ),
+        //estilo do appbar
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.indigoAccent, Colors.deepPurpleAccent],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+        ),
+      ),
       body: Container(
         padding: EdgeInsets.all(20),
         child: Column(
           children: [
             //Lista de item
             Expanded(
-              child: ListView(
-                children: [
-                  //Item
-                  Container(
-                    height: 130,
-
-                    decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(40),
-                     boxShadow: <BoxShadow>[
-                      BoxShadow(
-                          color: Colors.black54,
-                          blurRadius: 8.0,
-                          offset: Offset(0.0,0.75)
-
-                        ),
-                      ],
-                      gradient: LinearGradient(
-                        colors: [Colors.indigoAccent, Colors.deepPurple],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
+              child: ListView.builder(
+                itemCount: itens.length,
+                itemBuilder: (context, index) => Card(
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 40,
+                      backgroundImage: NetworkImage(itens[index].urlAvatar),
                     ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      //image do humgurger
-                      Container(
-                        height: 110,
-                        width: 110,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(36),
+                    title: Text(itens[index].nome),
+                    subtitle: Text("R\$ "+itens[index].preco.toStringAsFixed(2)),
+                    trailing:  IconButton(onPressed: () {
+                      setState(() {
+                        _removeItem(index);
+                    }); }, icon: Icon(Icons.delete),),
 
-                          image:  DecorationImage(
-                            image: NetworkImage("https://c.pxhere.com/photos/13/fa/beef_bread_bun_burger_cheese_cheeseburger_close_up_delicious-1556149.jpg!d"),
-                            fit: BoxFit.cover,
-
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 35,
-                      ),
-                      // Informação do item
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "Nome do\n acompanhamento",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "Descrição do item",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "R\$ 99,99",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                    onTap: (){
+                    },
                   ),
-                ),
-                ],
+                 ),
               ),
             ),
             // Barra inferior carrinho
@@ -180,4 +145,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
       ),
     ),
   );
+  void _removeItem(int index){
+    itens.remove(itens[index]);
+  }
 }
