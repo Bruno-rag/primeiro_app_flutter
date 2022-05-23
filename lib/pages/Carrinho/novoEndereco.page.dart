@@ -219,12 +219,10 @@ class _NovoEnderecoPageState extends State<NovoEnderecoPage> {
                   child: TextButton(
                     onPressed: (){
                       Endereco endereco = Endereco(rua: rua,bairro: bairro,numero: numero,ref: ref,cep: cep,cidade: cidade,estado: estado);
-                      print(endereco.rua);
 
                       value.addEndereco(endereco);
-                      print(value.listaEndereco[0].bairro);
-                      Navigator.of(context).push<int>(MaterialPageRoute(
-                          builder: (_) => EnderecoPage()));
+
+                      Navigator.of(context).pop();
                     },
                     child: Text(
                       "Concluir",

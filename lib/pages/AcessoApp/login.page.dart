@@ -85,7 +85,7 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 40,
+              height: 20,
             ),
             //button confirmar
             Container(
@@ -125,6 +125,60 @@ class LoginPage extends StatelessWidget {
                   "Ainda não tem conta? Click aqui.",
                   style: TextStyle(
                     fontSize: 16,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                "ou",
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 25,
+
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            //Facebook
+            Container(
+              height: 45,
+              width: MediaQuery.of(context).size.width,
+              color: Colors.blue,
+              child: TextButton(
+                onPressed: (){
+
+                },
+                child: Text(
+                  "Facebook",
+                  style: TextStyle(
+                      color: Colors.white
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            //Google
+            Container(
+              height: 45,
+              width: MediaQuery.of(context).size.width,
+              color: Colors.orange,
+              child: TextButton(
+                onPressed: (){
+
+                },
+                child: Text(
+                  "Google",
+                  style: TextStyle(
+                      color: Colors.white
                   ),
                 ),
               ),

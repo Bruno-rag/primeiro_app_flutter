@@ -5,6 +5,7 @@ import 'package:primeiro_app_flutter/pages/Carrinho/novoEndereco.page.dart';
 import 'package:provider/provider.dart';
 
 import '../../repository/Repository.control.dart';
+import 'descricaoEndereco.page.dart';
 
 class EnderecoPage extends StatefulWidget {
   const EnderecoPage({Key? key}) : super(key: key);
@@ -70,7 +71,11 @@ class _EnderecoPageState extends State<EnderecoPage> {
                             ),
                           ],
                         ),
-
+                        onTap: (){
+                          Navigator.of(context).push<int>(MaterialPageRoute(
+                            builder: (_) => DescricaoEnderecoPage(endereco: value.listaEndereco[index]),
+                          ),);
+                        },
                       ),
                     )
                   );

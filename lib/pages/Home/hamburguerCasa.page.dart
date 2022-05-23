@@ -13,17 +13,29 @@ class HamburgerCasa extends StatefulWidget {
 class _HamburgerCasaState extends State<HamburgerCasa> {
   final urlBurger = "https://media.istockphoto.com/photos/burger-isolated-on-white-picture-id840902892?b=1&k=20&m=840902892&s=170667a&w=0&h=ld3yD9lC4wQnHEpk7SsQlUZp4XkqVUAc5DPJsLRLsi4=";
   List<Item> burger= [
-    const Item(nome: "X-tudo",
-        preco: 14.00,
+    const Item(nome: "Garage Premium",
+        preco: 29,
         urlAvatar: "https://c.pxhere.com/photos/13/fa/beef_bread_bun_burger_cheese_cheeseburger_close_up_delicious-1556149.jpg!d",
         descricao: "",
         quantidade : 1,
     ),
-    const Item(nome: "Duplo bacon",
-        preco: 16.00,
+    const Item(nome: "Bora",
+        preco: 28,
         urlAvatar: "https://c.pxhere.com/photos/13/fa/beef_bread_bun_burger_cheese_cheeseburger_close_up_delicious-1556149.jpg!d",
         descricao: "",
         quantidade : 1,
+    ),
+    const Item(nome: "viper",
+      preco: 28,
+      urlAvatar: "https://c.pxhere.com/photos/13/fa/beef_bread_bun_burger_cheese_cheeseburger_close_up_delicious-1556149.jpg!d",
+      descricao: "",
+      quantidade : 1,
+    ),
+    const Item(nome: "Coalho",
+      preco: 29,
+      urlAvatar: "https://c.pxhere.com/photos/13/fa/beef_bread_bun_burger_cheese_cheeseburger_close_up_delicious-1556149.jpg!d",
+      descricao: "",
+      quantidade : 1,
     ),
   ];
 

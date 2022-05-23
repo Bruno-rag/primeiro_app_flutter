@@ -5,6 +5,7 @@ import 'package:primeiro_app_flutter/modelo/item.model.dart';
 import 'package:primeiro_app_flutter/modelo/ingrediente.model.dart';
 
 import '../modelo/endereco.model.dart';
+import '../modelo/pedido.model.dart';
 
 
 class Repository extends ChangeNotifier{
@@ -12,16 +13,21 @@ class Repository extends ChangeNotifier{
  List<Item> _listaItem = [];
  List<Item> _listaBurger = [];
  List<Endereco> _listaEndereco = [];
+ List<Pedido> _listPedido = [];
+ late Pedido pedidotemp;
  List<Ingrediente> _listIngre = [
-   Ingrediente(nome: "Pão", preco: 2,),
-   Ingrediente(nome: "Carne", preco: 3,),
-   Ingrediente(nome: "Tomate", preco: 0.2,),
+   Ingrediente(nome: "Carne", preco: 9,),
+   Ingrediente(nome: "Queijo", preco: 4,),
+   Ingrediente(nome: "Molho", preco: 4,),
+   Ingrediente(nome: "Bacon", preco: 4,),
+  Ingrediente(nome: "Cebola", preco: 4,),
  ];
 
  UnmodifiableListView<Item> get listaItem => UnmodifiableListView(_listaItem);
  UnmodifiableListView<Ingrediente> get listaIngre => UnmodifiableListView(_listIngre);
  UnmodifiableListView<Item> get listaBurger => UnmodifiableListView(_listaBurger);
  UnmodifiableListView<Endereco> get listaEndereco => UnmodifiableListView(_listaEndereco);
+ UnmodifiableListView<Pedido> get listaPedido => UnmodifiableListView(_listPedido);
 
  itemRemove(int index){
   _listaItem.remove(_listaItem[index]);
@@ -59,12 +65,13 @@ class Repository extends ChangeNotifier{
  }
 
  maisIngredinte(int index){
-  if(_listIngre[index].quantidade! < 5)
-  _listIngre[index].quantidade = _listIngre[index].quantidade! + 1;
+  if(_listIngre[index].quantidade! < 3){
+   _listIngre[index].quantidade = _listIngre[index].quantidade! + 1;
+  }
   notifyListeners();
  }
  menosIngredinte(int index){
-  if(_listIngre[index].quantidade! > 0)
+  if(_listIngre[index].quantidade! > 0  )
    _listIngre[index].quantidade = _listIngre[index].quantidade! - 1;
 
   notifyListeners();

@@ -92,11 +92,14 @@ class _DescricaoPageState extends State<DescricaoPage> {
                 ),
                 onPressed: () {
                   //_enviarAgr();
+
                   itens.itemAdd(widget.burger!);
+                  Navigator.of(context).pop();
                   Navigator.of(context).push<int>(MaterialPageRoute(
                     builder: (_) => CarrinhoPage(),
 
                   ),);
+
                 },
               ),
             ),

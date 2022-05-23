@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:primeiro_app_flutter/modelo/cartao.model.dart';
 import 'package:primeiro_app_flutter/repository/Repository.control.dart';
 import 'package:provider/provider.dart';
 
-class CartaoPage extends StatelessWidget {
-  CartaoPage({Key? key}) : super(key: key);
+class CreditoPage extends StatelessWidget {
+  CreditoPage({Key? key}) : super(key: key);
+
+  String nome = "";
+  String numCartao= "";
+  String numero = "";
+  String validade = "";
+  String cvv = "";
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +64,9 @@ class CartaoPage extends StatelessWidget {
                       ),
                     ),
                     style: TextStyle(fontSize: 20),
+                    onChanged: (texto){
+                      nome = texto;
+                    },
                   ),
                   SizedBox(
                     height: 8,
@@ -74,6 +84,9 @@ class CartaoPage extends StatelessWidget {
                       ),
                     ),
                     style: TextStyle(fontSize: 20),
+                    onChanged: (texto){
+                      numCartao = texto;
+                    },
                   ),
                   SizedBox(
                     height: 8,
@@ -91,14 +104,15 @@ class CartaoPage extends StatelessWidget {
                       ),
                     ),
                     style: TextStyle(fontSize: 20),
+                    onChanged: (texto){
+                      validade = texto;
+                    },
                   ),
                   SizedBox(
                     height: 8,
                   ),
                   TextField(
-
                     keyboardType: TextInputType.text,
-
                     decoration: InputDecoration(
                       labelText: "CVV",
                       contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10.0),
@@ -110,31 +124,42 @@ class CartaoPage extends StatelessWidget {
                       ),
                     ),
                     style: TextStyle(fontSize: 20),
+                    onChanged: (texto){
+                      cvv = texto;
+                    },
                   ),
                   SizedBox(
                     height: 8,
                   ),
-
                 ],
               ),
             ),
           ),
           //Botão de confirmar
-          Container(
+        Consumer<Repository>(
+        builder: (context, value, child) {
+          return Container(
             height: 45,
-            width: MediaQuery.of(context).size.width,
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
             color: Colors.deepPurple,
             child: TextButton(
-              onPressed: (){},
+              onPressed: () {
+                Navigator.of(context).pop();
+                value.pedidotemp.cartao = Cartao(nome,validade, numCartao,cvv);
+              },
               child: Text(
                 "Concluir",
                 style: TextStyle(
                     color: Colors.white
                 ),
               ),
-
             ),
-          ),
+          );
+          }
+        )
         ],
       ),
     );

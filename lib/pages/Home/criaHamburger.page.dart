@@ -132,9 +132,10 @@ class _CriaHamburgerPageState extends State<CriaHamburgerPage> {
                             descricao: valueIngre.criarDescricao(),
                             quantidade: 1,
                         );
-                        print(item.nome);
+
                         valueIngre.itemAdd(item);
                         valueIngre.addBurger(item);
+                        Navigator.of(context).pop();
                         Navigator.of(context).push<int>(MaterialPageRoute(
                           builder: (_) => CarrinhoPage(),
                         ),);

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class PixPage extends StatefulWidget {
-  const PixPage({Key? key}) : super(key: key);
+class DebitoPage extends StatefulWidget {
+  const DebitoPage({Key? key}) : super(key: key);
 
   @override
-  State<PixPage> createState() => _PixPageState();
+  State<DebitoPage> createState() => _DebitoPageState();
 }
 
-class _PixPageState extends State<PixPage> {
+class _DebitoPageState extends State<DebitoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Pix",
+          "Débito",
         ),
         //estilo do appbar
         flexibleSpace: Container(
