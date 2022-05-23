@@ -13,19 +13,27 @@ class _BebidasPageState extends State<BebidasPage> {
   List<Item> burger= [
     const Item(nome: "Coca-cola 300ml",
         preco: 14.00,
-        urlAvatar: "https://media.istockphoto.com/photos/alcoholic-drinks-picture-id816174634?k=20&m=816174634&s=612x612&w=0&h=KTanppG1bSlOoNe6U8ffi4xhekJebe02kiBKK_FzXQ4="
+        urlAvatar: "https://media.istockphoto.com/photos/alcoholic-drinks-picture-id816174634?k=20&m=816174634&s=612x612&w=0&h=KTanppG1bSlOoNe6U8ffi4xhekJebe02kiBKK_FzXQ4=",
+        descricao: "",
+        quantidade : 1,
     ),
     const Item(nome: "Pepsi 300ml",
         preco: 16.00,
-        urlAvatar: "https://media.istockphoto.com/photos/alcoholic-drinks-picture-id816174634?k=20&m=816174634&s=612x612&w=0&h=KTanppG1bSlOoNe6U8ffi4xhekJebe02kiBKK_FzXQ4="
+        urlAvatar: "https://media.istockphoto.com/photos/alcoholic-drinks-picture-id816174634?k=20&m=816174634&s=612x612&w=0&h=KTanppG1bSlOoNe6U8ffi4xhekJebe02kiBKK_FzXQ4=",
+        descricao: "",
+        quantidade : 1,
     ),
     const Item(nome: "Pepsi 300ml",
         preco: 16.00,
-        urlAvatar: "https://media.istockphoto.com/photos/alcoholic-drinks-picture-id816174634?k=20&m=816174634&s=612x612&w=0&h=KTanppG1bSlOoNe6U8ffi4xhekJebe02kiBKK_FzXQ4="
+        urlAvatar: "https://media.istockphoto.com/photos/alcoholic-drinks-picture-id816174634?k=20&m=816174634&s=612x612&w=0&h=KTanppG1bSlOoNe6U8ffi4xhekJebe02kiBKK_FzXQ4=",
+        descricao: "",
+        quantidade : 1,
     ),
     const Item(nome: "Pepsi 300ml",
         preco: 16.00,
-        urlAvatar: "https://media.istockphoto.com/photos/alcoholic-drinks-picture-id816174634?k=20&m=816174634&s=612x612&w=0&h=KTanppG1bSlOoNe6U8ffi4xhekJebe02kiBKK_FzXQ4="
+        urlAvatar: "https://media.istockphoto.com/photos/alcoholic-drinks-picture-id816174634?k=20&m=816174634&s=612x612&w=0&h=KTanppG1bSlOoNe6U8ffi4xhekJebe02kiBKK_FzXQ4=",
+        descricao: "",
+        quantidade : 1,
     ),
   ];
   @override
@@ -55,7 +63,7 @@ class _BebidasPageState extends State<BebidasPage> {
               radius: 40,
               backgroundImage: NetworkImage(burger[index].urlAvatar),
             ),
-            title: Text(burger[index].nome,),
+            title: Text(burger[index].nome),
             subtitle: Text("R\$ "+burger[index].preco.toStringAsFixed(2),),
             trailing: const Icon(Icons.arrow_forward),
 

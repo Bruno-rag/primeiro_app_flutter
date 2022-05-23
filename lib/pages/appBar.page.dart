@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_app_flutter/pages/Home/home.page.dart';
-import 'package:primeiro_app_flutter/pages/chat.page.dart';
 import 'package:primeiro_app_flutter/pages/perfil.page.dart';
 import 'package:primeiro_app_flutter/pages/Carrinho/carrinho.page.dart';
+import 'package:primeiro_app_flutter/pages/Home/monte.page.dart';
 
 class SimpleAppBarPage extends StatefulWidget {
   @override
@@ -15,11 +15,6 @@ class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
     child: Scaffold(
       appBar: AppBar(
         title: Text('Hamburgueria'),
-        //centerTitle: true,
-       /* leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {},
-        ),*/
         actions: [
           IconButton(
             icon: Icon(Icons.add_shopping_cart),
@@ -30,10 +25,6 @@ class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
               ),);
             },
           ),
-          /*IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {},
-          )*/
         ],
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -50,9 +41,8 @@ class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
           indicatorWeight: 5,
           tabs: [
             Tab(icon: Icon(Icons.home), text: 'Home'),
+            Tab(icon: Icon(Icons.star), text: 'Criar'),
             Tab(icon: Icon(Icons.face), text: 'Perfil'),
-            //Tab(icon: Icon(Icons.add_shopping_cart), text: 'Carrinho'),
-            Tab(icon: Icon(Icons.chat_bubble), text: 'Chat'),
           ],
         ),
         elevation: 20,
@@ -61,9 +51,9 @@ class _SimpleAppBarPageState extends State<SimpleAppBarPage> {
       body: TabBarView(
         children: <Widget> [
           HomePage(),
+          MontePage(),
           PerfilPage(),
-         // CarrinhoPage(),
-          ChatPage(),
+
         ],
       ),
     ),

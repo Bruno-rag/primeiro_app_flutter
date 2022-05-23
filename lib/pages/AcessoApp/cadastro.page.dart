@@ -11,14 +11,17 @@ class CadastroPage extends StatefulWidget {
 
 class _CadastroPageState extends State<CadastroPage> {
 
-  final item = ["Masculino","Feminino"];
-  String? value;
+  final item = ["Gênero","Masculino","Feminino"];
+  String? value = "Gênero";
 
   DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
     value: item,
     child: Text(
       item,
-      style: TextStyle(fontWeight: FontWeight.normal,fontSize: 20),
+      style: TextStyle(fontWeight: FontWeight.normal,
+          fontSize: 20,
+          color: Colors.black38,
+      ),
     ),
   );
 
@@ -48,6 +51,7 @@ class _CadastroPageState extends State<CadastroPage> {
             ),
             //Nome
             TextFormField(
+              autofocus: true,
               decoration: InputDecoration(
                 labelText: "Nome",
                 contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10.0),
@@ -73,7 +77,7 @@ class _CadastroPageState extends State<CadastroPage> {
                 border: OutlineInputBorder(),
                 labelStyle: TextStyle(
                   color: Colors.black38,
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.normal,
                   fontSize: 20,
                 ),
               ),
@@ -92,8 +96,7 @@ class _CadastroPageState extends State<CadastroPage> {
                     width: 1,
                 ),
               ),
-              child: DropdownButton <String>(
-
+              child: DropdownButton<String>(
                 value: value,
                 items: item.map(buildMenuItem).toList(),
                 onChanged: (value) => setState(() => this.value = value),

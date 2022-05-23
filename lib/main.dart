@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_app_flutter/pages/AcessoApp/login.page.dart';
-import 'package:primeiro_app_flutter/pages/Carrinho/carrinho.page.dart';
-import 'package:primeiro_app_flutter/pages/Home/descricao.page.dart';
-import 'package:primeiro_app_flutter/pages/Home/home.page.dart';
-import 'package:primeiro_app_flutter/pages/appBar.page.dart';
-import 'package:primeiro_app_flutter/pages/AcessoApp/cadastro.page.dart';
-import 'package:primeiro_app_flutter/pages/AcessoApp/recupera.page.dart';
+import 'package:primeiro_app_flutter/repository/Repository.control.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Repository(),
+      child: MyApp(),
+    )
+  );
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -23,9 +23,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      routes: <String, WidgetBuilder>{
-        CarrinhoPage.tag: (context) => CarrinhoPage(),
-      },
       home: LoginPage(),
     );
   }

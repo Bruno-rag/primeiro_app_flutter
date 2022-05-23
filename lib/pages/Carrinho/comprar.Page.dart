@@ -2,15 +2,25 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_app_flutter/pages/Carrinho/endereco.page.dart';
 import 'package:primeiro_app_flutter/pages/Carrinho/pagamento.page.dart';
+import 'package:primeiro_app_flutter/modelo/item.model.dart';
 
 class ComprarPage extends StatefulWidget {
-  const ComprarPage({Key? key}) : super(key: key);
+  final List<Item>? item;
+  final double? valor;
+  const ComprarPage({Key? key, this.item, this.valor}) : super(key: key);
 
   @override
   State<ComprarPage> createState() => _ComprarPageState();
 }
 
 class _ComprarPageState extends State<ComprarPage> {
+
+  List<Item> itens= [];
+
+  void initState() {
+    super.initState();
+    itens.insertAll(0,widget.item!);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,90 +139,18 @@ class _ComprarPageState extends State<ComprarPage> {
           ),
           //Lista de itens
           Expanded(
-            child: Container(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Container(
-                    height: 130,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      boxShadow: <BoxShadow>[
-                        BoxShadow(
-                            color: Colors.black54,
-                            blurRadius: 15.0,
-                            offset: Offset(0.0,0.75)
-
-                        )
-                      ],
-                      gradient: LinearGradient(
-                        colors: [Colors.indigoAccent, Colors.deepPurple],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        //image do humgurger
-                        Container(
-                          height: 110,
-                          width: 110,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(36),
-
-                            image:  DecorationImage(
-                              image: NetworkImage("https://c.pxhere.com/photos/13/fa/beef_bread_bun_burger_cheese_cheeseburger_close_up_delicious-1556149.jpg!d"),
-                              fit: BoxFit.cover,
-
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 35,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "Nome Do Hamburger",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "Descrição do item",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "R\$ 99,99",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+            child: ListView.builder(
+              itemCount: itens.length,
+              itemBuilder: (context, index) => Card(
+                child: ListTile(
+                  leading: CircleAvatar(
+                    radius: 40,
+                    backgroundImage: NetworkImage(itens[index].urlAvatar),
                   ),
-                ],
+                  title: Text(itens[index].nome),
+                  subtitle: Text("R\$ "+itens[index].preco.toStringAsFixed(2)),
+
+                ),
               ),
             ),
           ),
@@ -236,7 +174,7 @@ class _ComprarPageState extends State<ComprarPage> {
                       ),
                     ),
                     Text(
-                      "R\$ 00.00",
+                      "R\$ " + widget.valor!.toStringAsFixed(2),
                       style: TextStyle(
                         color: Colors.deepPurpleAccent,
                         fontSize: 18,
