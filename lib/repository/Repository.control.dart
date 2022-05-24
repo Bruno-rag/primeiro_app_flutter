@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
+import 'package:primeiro_app_flutter/modelo/cartao.model.dart';
 import 'package:primeiro_app_flutter/modelo/item.model.dart';
 import 'package:primeiro_app_flutter/modelo/ingrediente.model.dart';
 
@@ -14,7 +15,8 @@ class Repository extends ChangeNotifier{
  List<Item> _listaBurger = [];
  List<Endereco> _listaEndereco = [];
  List<Pedido> _listPedido = [];
- late Pedido pedidotemp;
+ late Pedido pedidotemp = Pedido();
+ List<Cartao> _listCartao = [];
  List<Ingrediente> _listIngre = [
    Ingrediente(nome: "Carne", preco: 9,),
    Ingrediente(nome: "Queijo", preco: 4,),
@@ -28,14 +30,15 @@ class Repository extends ChangeNotifier{
  UnmodifiableListView<Item> get listaBurger => UnmodifiableListView(_listaBurger);
  UnmodifiableListView<Endereco> get listaEndereco => UnmodifiableListView(_listaEndereco);
  UnmodifiableListView<Pedido> get listaPedido => UnmodifiableListView(_listPedido);
+ UnmodifiableListView<Cartao> get listCartao => UnmodifiableListView(_listCartao);
 
- itemRemove(int index){
+  itemRemove(int index) {
   _listaItem.remove(_listaItem[index]);
-  notifyListeners();
+  //notifyListeners();
  }
- itemAdd(Item item){
+ itemAdd(Item item) {
   _listaItem.add(item);
-  notifyListeners();
+  //notifyListeners();
  }
  addBurger(Item item){
   _listaBurger.add(item);
@@ -45,7 +48,6 @@ class Repository extends ChangeNotifier{
   _listaBurger.remove(_listaBurger[index]);
   notifyListeners();
  }
-
  addEndereco(Endereco endereco){
   _listaEndereco.add(endereco);
   notifyListeners();
@@ -54,16 +56,30 @@ class Repository extends ChangeNotifier{
   _listaEndereco.remove(_listaEndereco[index]);
   notifyListeners();
  }
-
- double valorTotal(){
+ addCartao(Cartao cartao){
+  _listCartao.add(cartao);
+  notifyListeners();
+ }
+ removeCartao(int index){
+  _listCartao.remove(_listCartao[index]);
+  notifyListeners();
+ }
+ addPedido(Pedido pedido){
+  _listPedido.add(pedido);
+  notifyListeners();
+ }
+ removePedido(int index){
+  _listPedido.remove(_listPedido[index]);
+  notifyListeners();
+ }
+ double valorTotal() {
   double valor = 0;
   for(int i =0; i < _listaItem.length;i++){
     valor += _listaItem[i].preco;
   }
-  notifyListeners();
+
   return valor;
  }
-
  maisIngredinte(int index){
   if(_listIngre[index].quantidade! < 3){
    _listIngre[index].quantidade = _listIngre[index].quantidade! + 1;
@@ -76,23 +92,23 @@ class Repository extends ChangeNotifier{
 
   notifyListeners();
  }
-
  double valorIngre(int index){
   double valor =0;
   valor =  _listIngre[index].preco! * _listIngre[index].quantidade!;
+  notifyListeners();
   return valor;
  }
-
  double valorTotalIngre(){
   double valor =0;
   for(int i =0; i < _listIngre.length; i++)
    valor = valor + (_listIngre[i].preco! * _listIngre[i].quantidade!);
+
   return valor;
  }
-
  String criarDescricao(){
   String descricao = "";
   descricao = _listIngre[0].nome!+", "+_listIngre[1].nome!+", "+_listIngre[2].nome!;
+  notifyListeners();
   return descricao;
  }
 

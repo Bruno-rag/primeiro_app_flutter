@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class DebitoPage extends StatefulWidget {
-  const DebitoPage({Key? key}) : super(key: key);
+class PixPage extends StatefulWidget {
+  const PixPage({Key? key}) : super(key: key);
 
   @override
-  State<DebitoPage> createState() => _DebitoPageState();
+  State<PixPage> createState() => _PixPageState();
 }
 
-class _DebitoPageState extends State<DebitoPage> {
+class _PixPageState extends State<PixPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

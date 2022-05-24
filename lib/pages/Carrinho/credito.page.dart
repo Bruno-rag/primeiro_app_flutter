@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_app_flutter/modelo/cartao.model.dart';
+import 'package:primeiro_app_flutter/pages/Carrinho/creditoList.page.dart';
 import 'package:primeiro_app_flutter/repository/Repository.control.dart';
 import 'package:provider/provider.dart';
 
@@ -146,16 +147,18 @@ class CreditoPage extends StatelessWidget {
                 .width,
             color: Colors.deepPurple,
             child: TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                value.pedidotemp.cartao = Cartao(nome,validade, numCartao,cvv);
-              },
+
               child: Text(
                 "Concluir",
                 style: TextStyle(
                     color: Colors.white
                 ),
               ),
+              onPressed: () {
+              Navigator.of(context).pop();
+              Cartao cartao = Cartao(nome,validade, numCartao,cvv);
+              value.addCartao(cartao);
+            },
             ),
           );
           }

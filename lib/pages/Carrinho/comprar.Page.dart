@@ -1,13 +1,22 @@
 
 import 'package:flutter/material.dart';
+import 'package:primeiro_app_flutter/modelo/endereco.model.dart';
 import 'package:primeiro_app_flutter/pages/Carrinho/endereco.page.dart';
 import 'package:primeiro_app_flutter/pages/Carrinho/pagamento.page.dart';
 import 'package:primeiro_app_flutter/modelo/item.model.dart';
+import 'package:provider/provider.dart';
+
+import '../../modelo/cartao.model.dart';
+import '../../modelo/pedido.model.dart';
+import '../../repository/Repository.control.dart';
+import 'infoPedido.page.dart';
 
 class ComprarPage extends StatefulWidget {
   final List<Item>? item;
   final double? valor;
-  const ComprarPage({Key? key, this.item, this.valor}) : super(key: key);
+  final Endereco? endereco;
+  final Cartao? cartao;
+  const ComprarPage({Key? key, this.item, this.valor, this.endereco, this.cartao}) : super(key: key);
 
   @override
   State<ComprarPage> createState() => _ComprarPageState();
@@ -183,21 +192,57 @@ class _ComprarPageState extends State<ComprarPage> {
                     ),
                   ],
                 ),
-                Container(
-                  color: Colors.deepPurpleAccent,
-                  height: MediaQuery.of(context).size.height,
 
-                  child: TextButton(
-                    child: Text(
-                      "Finalizar compra",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
+                Consumer<Repository>(
+                builder: (context, value, child) {
+                  return Container(
+                      color: Colors.deepPurpleAccent,
+                      height: MediaQuery.of(context).size.height,
+                      child: TextButton(
+                        child: Text(
+                          "Finalizar compra",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                        onPressed: () {
+                          /*Navigator.of(context).push<int>(MaterialPageRoute(
+                            builder: (_) => InfoPedidoPage(),
+                          ),);*/
+
+                          if(widget.endereco != null && widget.cartao != null) {
+                            Navigator.of(context).push<int>(MaterialPageRoute(
+                              builder: (_) =>
+                                  InfoPedidoPage(endereco: widget.endereco,
+                                      cartao: widget.cartao),
+                            ),);
+                          }else{
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                // retorna um objeto do tipo Dialog
+                                return AlertDialog(
+                                  title: new Text("Alert"),
+                                  content: new Text("Endereço ou dados do cartão não definidos"),
+                                  actions: <Widget>[
+                                    // define os botões na base do dialogo
+                                    new TextButton(
+                                      child: new Text("Fechar"),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        },
                       ),
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
+                    );
+                  }
+                )
               ],
             ),
           ),

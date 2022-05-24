@@ -1,21 +1,16 @@
 
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:primeiro_app_flutter/pages/Carrinho/comprar.Page.dart';
 import 'package:primeiro_app_flutter/repository/Repository.control.dart';
 import 'package:provider/provider.dart';
 
 class CarrinhoPage extends StatefulWidget {
-
-
   const CarrinhoPage({Key? key,}) : super(key: key,);
-
   @override
   State<CarrinhoPage> createState() => _CarrinhoPageState();
 }
-
 class _CarrinhoPageState extends State<CarrinhoPage> {
-
   @override
   Widget build(BuildContext context){
     return Container(
@@ -47,7 +42,6 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
                 color: Colors.black87,
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
-
               ),
             ),
           ),
@@ -78,8 +72,12 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
                       ),
                       title: Text(value.listaItem[index].nome),
                       subtitle: Text("R\$ "+value.listaItem[index].preco.toStringAsFixed(2)),
-                      trailing:  IconButton(onPressed: () {
-                          value.itemRemove(index);
+                      trailing:  IconButton(
+                        onPressed: () {
+                            setState(() {
+                              value.itemRemove(index);
+                            });
+
                         },
                         icon: Icon(Icons.delete)
                       ),

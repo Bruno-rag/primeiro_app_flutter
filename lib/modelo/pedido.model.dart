@@ -3,10 +3,10 @@ import 'endereco.model.dart';
 import 'item.model.dart';
 
 class Pedido{
-  List<Item> item;
-  Endereco endereco;
-  Cartao cartao;
+  List<Item>? item;
+  Endereco? endereco;
+  Cartao? cartao;
 
-  Pedido(this.item, this.endereco, this.cartao);
+  Pedido({this.item, this.endereco, this.cartao});
 
 }

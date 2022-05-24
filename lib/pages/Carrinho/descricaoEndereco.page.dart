@@ -3,6 +3,7 @@ import 'package:primeiro_app_flutter/modelo/endereco.model.dart';
 import 'package:provider/provider.dart';
 
 import '../../repository/Repository.control.dart';
+import 'comprar.Page.dart';
 
 class DescricaoEnderecoPage extends StatefulWidget {
   final Endereco? endereco;
@@ -69,7 +70,13 @@ class _DescricaoEnderecoPageState extends State<DescricaoEnderecoPage> {
                   ),
                   onPressed: () {
                     Navigator.of(context).pop();
-                    value.pedidotemp.endereco;
+
+                   /* Navigator.of(context).push<int>(MaterialPageRoute(
+                      builder: (_) =>
+                          ComprarPage(endereco : widget.endereco!),
+                    ),);*/
+
+
 
                   },
                 ),

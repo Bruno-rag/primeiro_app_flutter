@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.only(
-          top: 60,
+          top: 40,
           right: 40,
           left: 40,
         ),

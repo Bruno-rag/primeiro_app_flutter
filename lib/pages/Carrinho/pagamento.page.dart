@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:primeiro_app_flutter/pages/Carrinho/credito.page.dart';
-import 'package:primeiro_app_flutter/pages/Carrinho/debito.page.dart';
+
+import 'package:primeiro_app_flutter/pages/Carrinho/creditoList.page.dart';
+import 'package:primeiro_app_flutter/pages/Carrinho/pix.page.dart';
 
 class PagamentoPage extends StatefulWidget {
   const PagamentoPage({Key? key}) : super(key: key);
@@ -30,10 +31,13 @@ class _PagamentoPageState extends State<PagamentoPage> {
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 10,
+          ),
           //Credito
           Container(
-
             height: 40,
+            width: 100,
             color: Colors.deepPurpleAccent,
             child: SizedBox.expand(
               child: TextButton(
@@ -49,21 +53,25 @@ class _PagamentoPageState extends State<PagamentoPage> {
                 onPressed: () {
                   Navigator.of(context).push<int>(
                     MaterialPageRoute(
-                      builder: (_)=> CreditoPage(),
+                      builder: (_)=> CreditoListPage(),
                     ),
                   );
                 },
               ),
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
           //Débito
           Container(
             height: 40,
+            width: 100,
             color: Colors.deepPurpleAccent,
             child: SizedBox.expand(
               child: TextButton(
                 child: Text(
-                      "Débito",
+                      "Pix",
                       textAlign: TextAlign.right,
                       style: TextStyle(
                           fontWeight: FontWeight.normal,
@@ -74,7 +82,7 @@ class _PagamentoPageState extends State<PagamentoPage> {
                 onPressed: () {
                   Navigator.of(context).push<int>(
                     MaterialPageRoute(
-                      builder: (_)=> DebitoPage(),
+                      builder: (_)=> PixPage(),
                     ),
                   );
                 },
